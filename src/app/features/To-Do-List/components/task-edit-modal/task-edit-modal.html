@@ -1,0 +1,76 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Edit task</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            
+            <div class="modal-body">
+                <form [formGroup]="taskForm">
+                  
+                 
+                  <div class="mb-3">
+                    <label class="form-label">Task Title <span class="text-danger">*</span></label>
+                    <input 
+                      type="text" 
+                      class="form-control" 
+                      formControlName="title"
+                      [class.is-invalid]="taskForm.get('title')?.invalid && taskForm.get('title')?.touched"
+                    >
+                    @if (taskForm.get('title')?.invalid && taskForm.get('title')?.touched) {
+                      <div class="invalid-feedback">
+                        Title is required.
+                      </div>
+                    }
+                  </div>
+              
+              
+                  <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea 
+                      class="form-control" 
+                      rows="3"
+                      formControlName="description"
+                    ></textarea>
+                  </div>
+              
+                  
+                  <div class="mb-3">
+                    <label class="form-label">Due Date</label>
+                    <input 
+                      type="date" 
+                      class="form-control" 
+                      [min]="minDate"
+                      formControlName="due_at"
+                    >
+                  </div>
+              
+                
+                  <div class="mb-3 form-check">
+                    <input 
+                      type="checkbox" 
+                      class="form-check-input" 
+                      id="completedCheck"
+                      formControlName="is_completed"
+                    >
+                    <label class="form-check-label" for="completedCheck">Is Completed</label>
+                  </div>
+              
+               
+                  <button 
+                    class="btn btn-success w-100" 
+                    type="button" 
+                    data-bs-dismiss="modal" 
+                    [disabled]="taskForm.invalid"
+                    (click)="onUpdate()">
+                    Update Task
+                  </button>
+              
+                </form>
+            </div>
+              
+              
+        </div>
+      </div>
+</div>
