@@ -1,0 +1,31 @@
+<h4 class="text-primary mt-4 ps-3">Tasks:</h4>
+    <div style="overflow-y: auto; height: 350px;">
+      @for(task of allTasks(); track task.id){
+        <div class="m-3">
+          <div class="p-2 shadow border">
+            <div class="row p-3 align-items-center">
+              <div class="row mb-3">
+                <div class="card col-md-10 border-0" [class.text-decoration-line-through]="task.is_completed">{{task.title}}</div>
+              </div>
+              <button 
+                class="btn btn-outline-primary col me-2" 
+                type="button" 
+                data-bs-toggle="modal" 
+                data-bs-target="#exampleModal" 
+                (click)="edit.emit(task)">
+                Edit
+              </button>
+              <button 
+                class="btn btn-outline-success col me-2" 
+                type="button" 
+                (click)="toggleComplete(task)">
+                complete
+              </button>
+              <button class="btn btn-outline-danger col" (click)="deleteTask(task)">
+                delete
+              </button>
+            </div>
+          </div>
+        </div>
+      }
+</div>
