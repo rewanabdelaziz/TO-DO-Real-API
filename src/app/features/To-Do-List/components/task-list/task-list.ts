@@ -30,9 +30,7 @@ export class TaskList implements OnInit{
 
   getAllTasks() {
     this._listManagements.getAllTasks().subscribe({
-      next: (res) => {this.allTasks.set(res.data)  
-        console.log(this.allTasks())
-      },
+      next: (res) => this.allTasks.set(res.data) ,
       error: (err) => console.log(err)
     });
   }
