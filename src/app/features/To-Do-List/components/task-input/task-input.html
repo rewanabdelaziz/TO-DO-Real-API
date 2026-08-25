@@ -1,0 +1,13 @@
+<div class="shadow">
+      <div class="input-group mb-3 p-4">
+        <input 
+          type="text" 
+          class="form-control" 
+          placeholder="Enter a new task" 
+          #title 
+          (input)="taskValue.set(title.value)"
+          [value]="taskValue()"
+        >
+        <button class="btn btn-outline-success" type="button" (click)="onAdd()">+</button>
+      </div>
+</div>
